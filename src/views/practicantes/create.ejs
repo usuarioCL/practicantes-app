@@ -1,0 +1,37 @@
+<!-- views/practicantes/create.ejs -->
+<%- include('../partials/header', { title: 'Agregar Practicante' }) %>
+<form action="/practicantes/crear" method="POST">
+  <div class="mb-3">
+    <label for="nombre_completo" class="form-label">Nombre Completo</label>
+    <input type="text" class="form-control" id="nombre_completo" name="nombre_completo" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="correo" class="form-label">Correo</label>
+    <input type="email" class="form-control" id="correo" name="correo" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="carrera_id" class="form-label">Carrera</label>
+    <select class="form-control" id="carrera_id" name="carrera_id" required>
+      <!-- Aquí asumo que tienes una lista de carreras que puedes enviar desde el servidor -->
+      <% carreras.forEach(carrera => { %>
+        <option value="<%= carrera.id %>"><%= carrera.nombre %></option>
+      <% }) %>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="fecha_inicio" class="form-label">Fecha de Inicio</label>
+    <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="telefono" class="form-label">Teléfono (opcional)</label>
+    <input type="text" class="form-control" id="telefono" name="telefono">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+<%- include('../partials/footer') %>

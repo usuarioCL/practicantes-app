@@ -1,0 +1,40 @@
+<%- include('../partials/header') %>
+
+<div class="container py-4">
+  <div class="card shadow-sm rounded-4">
+    <div class="card-header bg-primary text-white">
+      <h3 class="mb-0">Detalles de Practicante</h3>
+    </div>
+    <div class="card-body">
+      <!-- Nombre del practicante -->
+      <h5 class="card-title"><%= practicante.nombre_completo %></h5>
+
+      <!-- Detalles del practicante -->
+      <div class="mb-3">
+        <p class="card-text"><strong>Correo:</strong> <%= practicante.correo %></p>
+        <p class="card-text"><strong>Teléfono:</strong> <%= practicante.telefono || 'No disponible' %></p>
+        <p class="card-text"><strong>Fecha de inicio:</strong> <%= new Date(practicante.fecha_inicio).toLocaleDateString() %></p>
+        <p class="card-text"><strong>Carrera:</strong> <%= practicante.carrera || 'No disponible' %></p>
+      </div>
+
+      <!-- Información adicional -->
+      <h6 class="mt-4"><strong>Más Información</strong></h6>
+      <div class="list-group">
+        <div class="list-group-item">
+          <strong>Fecha de Creación:</strong> <%= new Date(practicante.created_at).toLocaleString() %>
+        </div>
+        <div class="list-group-item">
+          <strong>Última Actualización:</strong> <%= new Date(practicante.updated_at).toLocaleString() %>
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="mt-4">
+        <a href="/practicantes" class="btn btn-secondary">Volver a la lista</a>
+        <a href="/practicantes/<%= practicante.id %>/editar" class="btn btn-warning">Editar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
